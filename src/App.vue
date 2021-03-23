@@ -1,30 +1,52 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="app" :class="{ dark: isDark }">
+    <base-header />
   </div>
-  <router-view/>
 </template>
 
+<script>
+import BaseHeader from "@/components/Header";
+import { mapGetters, mapActions } from "vuex";
+
+export default {
+  name: "app",
+  components: {
+    BaseHeader,
+  },
+  created() {
+    if (this.hasMode === null) {
+      this.setMode;
+    } else {
+      this.resetMode;
+    }
+  },
+  computed: {
+    ...mapGetters(["isDark"]),
+    hasMode() {
+      return JSON.parse(localStorage.getItem("darkMode"));
+    },
+  },
+  methods: {
+    ...mapActions(["setMode", "resetMode"]),
+  },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
 
-#nav {
-  padding: 30px;
+.app {
+  width: 100vw;
+  min-height: 100vh;
+  background: #f3f3f3;
+  transition: background 0.3s ease-in-out;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.dark {
+  background-color: #192734;
+  color: #f3f3f3;
 }
 </style>
