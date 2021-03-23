@@ -21,13 +21,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["isDark"]),
+    ...mapGetters('darkModeModule', ["isDark"]),
     hasMode() {
       return JSON.parse(localStorage.getItem("darkMode"));
     },
   },
   methods: {
-    ...mapActions(["setMode", "resetMode"]),
+    ...mapActions('darkModeModule', ["setMode", "resetMode"]),
   },
 };
 </script>

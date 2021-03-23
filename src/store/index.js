@@ -1,37 +1,16 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+import darkModeModule from './modules/darkMode/';
+import rootActions from './actions';
+import rootMutations from './mutations';
+import rootGetters from './getters';
+
 
 export default createStore({
-  state: {
-    darkMode: false
-  },
-  mutations: {
-    changeMode(state) {
-      state.darkMode = !state.darkMode;
-      JSON.stringify(localStorage.setItem('darkMode', state.darkMode))
-    },
-    setMode(state){
-      JSON.stringify(localStorage.setItem('darkMode', state.darkMode))
-    },
-    resetMode(state, payload){
-     state.darkMode = payload;
-    }
-  },
-  actions: {
-    changeMode(context){
-      context.commit('changeMode');
-    },
-    setMode(context){
-      context.commit('setMode');
-    },
-    resetMode(context, payload){
-      context.commit('resetMode', payload);
-    }
-  },
-  getters: {
-    isDark(state) {
-      return state.darkMode
-    },
-  },
+  state: {},
+  rootActions,
+  rootMutations,
+  rootGetters,
   modules: {
+    darkModeModule
   }
 })
