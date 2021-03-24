@@ -1,17 +1,20 @@
 <template>
   <div class="app" :class="{ dark: isDark }">
     <base-header />
+    <PruebaTraduccion/>
   </div>
 </template>
 
 <script>
 import BaseHeader from "@/components/Header";
+import PruebaTraduccion from './components/PruebaTraducción';
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "app",
   components: {
     BaseHeader,
+    PruebaTraduccion
   },
   created() {
     if (this.hasMode === null) {

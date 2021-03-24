@@ -1,0 +1,19 @@
+{
+  "lang": "en",
+  "language": "English",
+  "message": {
+    "greeting": "Hello"
+  },
+  "header": {
+    "publication": "Publication | Publications",
+    "pet": "Pet | Pets",
+    "shelter": "Shelter | Shelters",
+    "vet": "Vet | Vets",
+    "shop": "Shop | Shops"
+  },
+  "dark-mode":{
+    "mode": "Mode",
+    "dark": "Dark",
+    "light": "Light"
+  }
+}

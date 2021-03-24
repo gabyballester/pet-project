@@ -6,7 +6,9 @@ import rootGetters from './getters';
 
 
 export default createStore({
-  state: {},
+  state: {
+    lang: null
+  },
   rootActions,
   rootMutations,
   rootGetters,

@@ -1,0 +1,19 @@
+{
+  "lang": "sp",
+  "language": "Español",
+  "message": {
+    "greeting": "Hola"
+  },
+  "header": {
+    "publication": "Publicación | Publicaciones",
+    "pet": "Mascota | Mascotas",
+    "shelter": "Protectora | Protectoras",
+    "vet": "Veterinario | Veterinarios",
+    "shop": "Tienda | Tiendas"
+  },
+  "dark-mode":{
+    "mode": "Modo",
+    "dark": "Oscuro",
+    "light": "Claro"
+  }
+}

@@ -1,8 +1,9 @@
 <template>
   <div class="icon-container" :class="{ dark: isDark }" @click="changeMode">
+    <span> {{ $t("dark-mode.mode") }}: </span>
     <icon class="icon" icon="moon" v-if="isDark" />
     <icon class="icon" icon="sun" v-else />
-    <span> Modo {{ showMode }} </span>
+    <span> {{ $t(showMode) }} </span>
   </div>
 </template>
 
@@ -16,7 +17,7 @@ export default {
   computed: {
     ...mapGetters("darkModeModule", ["isDark"]),
     showMode() {
-      return this.isDark ? "Oscuro" : "Claro";
+      return this.isDark ? "dark-mode.dark" : "dark-mode.light";
     },
   },
 };
@@ -24,14 +25,15 @@ export default {
 
 <style lang="scss" scoped>
 .icon-container {
-  // border: 3px solid #2e508d;
   cursor: pointer;
   color: #0938af;
   font-weight: 900;
+  .icon {
+    margin: 0 4px;
+  }
 }
 
 .dark {
-  // border: 2px solid yellow;
   background: unset;
   color: yellow;
 }
@@ -39,5 +41,4 @@ export default {
 span {
   text-transform: capitalize;
 }
-
 </style>

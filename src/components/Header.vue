@@ -1,16 +1,16 @@
 <template>
   <header>
-    <h1>Logotipo</h1>
+    <h1>Logo</h1>
     <nav>
-      <div class="nav-link">Publicaciones</div>
-      <div class="nav-link">Mascotas</div>
-      <div class="nav-link">Protectoras</div>
-      <div class="nav-link">Veterinarios</div>
-      <div class="nav-link">Tiendas</div>
+      <div class="nav-link">{{ $t("header.publication",2) }}</div>
+      <div class="nav-link">{{ $t("header.pet",2) }}</div>
+      <div class="nav-link">{{ $t("header.shelter",2) }}</div>
+      <div class="nav-link">{{ $t("header.vet",2) }}</div>
+      <div class="nav-link">{{ $t("header.shop",2) }}</div>
     </nav>
     <div class="toggle">
-      <base-toggle />
       <language-selector />
+      <base-toggle />
     </div>
   </header>
 </template>
@@ -48,7 +48,7 @@ header nav .nav-link:hover {
 
 .toggle {
   height: 100%;
-  width: 7.1rem;
+  width: 8rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
