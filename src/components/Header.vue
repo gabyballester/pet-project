@@ -10,6 +10,7 @@
     </nav>
     <div class="toggle">
       <base-toggle />
+      <language-selector />
     </div>
   </header>
 </template>
@@ -19,7 +20,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 25px;
+  padding: 0px 15px 0px 25px;
   height: 60px;
   background: #c3c3c3;
   transition: background 0.3s ease-in-out;
@@ -46,8 +47,12 @@ header nav .nav-link:hover {
 }
 
 .toggle {
+  height: 100%;
+  width: 7.1rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
 }
 /* Dark styles */
 .dark header {

@@ -23,14 +23,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-span {
-  text-transform: capitalize;
-  margin-left: 5px;
-}
-
 .icon-container {
   // border: 3px solid #2e508d;
-  padding: 9px;
   cursor: pointer;
   color: #0938af;
   font-weight: 900;
@@ -41,4 +35,9 @@ span {
   background: unset;
   color: yellow;
 }
+
+span {
+  text-transform: capitalize;
+}
+
 </style>
