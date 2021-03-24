@@ -5,7 +5,7 @@ import getters from './getters';
 export default {
   namespaced: true,
   state: {
-    darkMode: false
+    darkMode: true
   },
   mutations: mutations,
   actions: actions,

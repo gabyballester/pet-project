@@ -11,13 +11,10 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   methods: {
-    ...mapActions('darkModeModule', ["changeMode"]),
-    // changeMode() {
-    //   this.$store.dispatch("changeMode");
-    // },
+    ...mapActions("darkModeModule", ["changeMode"]),
   },
   computed: {
-    ...mapGetters('darkModeModule', ["isDark"]),
+    ...mapGetters("darkModeModule", ["isDark"]),
     showMode() {
       return this.isDark ? "Oscuro" : "Claro";
     },

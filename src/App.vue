@@ -15,19 +15,19 @@ export default {
   },
   created() {
     if (this.hasMode === null) {
-      this.setMode;
+      this.resetMode();
     } else {
-      this.resetMode;
+      this.setMode(this.hasMode);
     }
   },
   computed: {
-    ...mapGetters('darkModeModule', ["isDark"]),
+    ...mapGetters("darkModeModule", ["isDark"]),
     hasMode() {
       return JSON.parse(localStorage.getItem("darkMode"));
     },
   },
   methods: {
-    ...mapActions('darkModeModule', ["setMode", "resetMode"]),
+    ...mapActions("darkModeModule", ["setMode", "resetMode"]),
   },
 };
 </script>

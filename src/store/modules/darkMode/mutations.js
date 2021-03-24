@@ -3,10 +3,10 @@ export default {
     state.darkMode = !state.darkMode;
     JSON.stringify(localStorage.setItem('darkMode', state.darkMode))
   },
-  setMode(state) {
-    JSON.stringify(localStorage.setItem('darkMode', state.darkMode))
-  },
-  resetMode(state, payload) {
+  setMode(state, payload) {
     state.darkMode = payload;
+  },
+  resetMode(state) {
+    JSON.stringify(localStorage.setItem('darkMode', state.darkMode))
   }
 }

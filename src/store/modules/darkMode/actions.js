@@ -2,10 +2,10 @@ export default {
   changeMode(context) {
     context.commit('changeMode');
   },
-  setMode(context) {
-    context.commit('setMode');
+  setMode(context, payload) {
+    context.commit('setMode', payload);
   },
-  resetMode(context, payload) {
-    context.commit('resetMode', payload);
+  resetMode(context) {
+    context.commit('resetMode');
   }
 }
