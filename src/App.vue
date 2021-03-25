@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import BaseHeader from "@/components/Header";
 import { mapGetters, mapActions } from "vuex";
+import "./assets/scss/index.scss"
 
 
 export default {

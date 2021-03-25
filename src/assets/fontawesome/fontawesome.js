@@ -6,6 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 library.add(
   solidIcons.faMoon,
   solidIcons.faSun,
+  solidIcons.faArrowRight,
+  solidIcons.faArrowLeft,
+  solidIcons.faPowerOff
 )
+
+
 
 export default FontAwesomeIcon;
