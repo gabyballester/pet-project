@@ -8,8 +8,15 @@ library.add(
   solidIcons.faSun,
   solidIcons.faArrowRight,
   solidIcons.faArrowLeft,
-  solidIcons.faPowerOff
+  solidIcons.faPowerOff,
+  solidIcons.faAd,
+  solidIcons.faPaw,
+  solidIcons.faUserFriends,
+  solidIcons.faHandHoldingMedical,
+  solidIcons.faBriefcaseMedical,
+  solidIcons.faStore
 )
+
 
 
 

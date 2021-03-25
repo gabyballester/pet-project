@@ -1,51 +1,85 @@
 <template>
-  <div>
-    <!-- <h2>Menu Sider Admin</h2> -->
-    <div class="layout-admin">
-      <header class="layout-admin__header">
-        <MenuTop/>
-      </header>
-      <div class="layout-admin__content">
-      <router-view></router-view>
+  <div class="global-container">
+    <div class="topmenu">
+      <MenuTop />
+    </div>
+    <div class="main-container">
+      <div class="side-menu">
+        <MenuSider />
       </div>
-      <Footer class="layout-admin__footer">Pets Project - Gabriel Ballester Morant</Footer>
+      <div class="body-content">
+        <div class="content">
+          <router-view></router-view>
+        </div>
+        <div class="footer">
+          <p>Footer</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import MenuTop from '../components/Admin/MenuTop'
+import MenuTop from "../components/Admin/MenuTop";
+import MenuSider from "../components/Admin/MenuSider";
 
 export default {
   components: {
-    MenuTop
+    MenuTop,
+    MenuSider,
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/scss/index.scss";
 
-.layout-admin{
-  transition: margin-left 0.2s;
-
-  &__header {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   display: flex;
-   padding: 0;
-   height: 65px;
+.global-container {
+  .topmenu {
+    display: flex;
+    flex-wrap: wrap;
+    height: 4rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
+  .main-container {
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: row;
 
-  &__content {
-    min-height: calc(100vh - 85px);
-    padding: 90px 25px 25px 25px
-  }
-
-  &__footer{
-    padding: 20px;
+    .side-menu {
+      display: flex;
+      width: 15rem;
+      position: fixed;
+      height: 100vh;
+      top: 4rem;
+      left: 0;
+    }
+    .body-content {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      margin-left: 15rem;
+      .content {
+        padding: 1rem;
+        width: 100%;
+        min-height: calc(100vh - 114px);
+      }
+      .footer {
+        padding: 1rem;
+        height: 50px;
+        position: sticky;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: calc(100vw - 15rem);
+        background: $background-grey-dark2;
+      }
+    }
   }
 }
-
 </style>

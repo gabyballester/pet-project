@@ -2,10 +2,6 @@
   <div class="menu-top">
     <div class="left">
       <h1 class="logo">Logo</h1>
-      <button @click="menuAction">
-        <!-- <icon class="icon" icon="arrow-right" /> -->
-        <icon class="icon" icon="arrow-left" />
-      </button>
     </div>
     <div class="right">
       <button @click="logout">
@@ -37,9 +33,9 @@ export default {
 
 // light mode
 .menu-top {
-  background: $menu-top-background-color;
+  background: $background-light;
   width: 100%;
-  padding: 0 3%;
+  padding: 0 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,12 +43,9 @@ export default {
 
   .left {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-
-    .icon {
-      margin-left: 2rem;
-    }
+    cursor: pointer;
   }
 
   button {

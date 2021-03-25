@@ -13,8 +13,8 @@ $primary-color: #0098d3;
 // $menu-color-item-danger-hover: #c03a35;
 
 
-$menu-top-background-color: #c3c3c3;
-$menu-top-background-color-dark: #15202b;
+
+
 
 $font-light: #fff;
 $font-dark: black;
@@ -31,13 +31,15 @@ $font-dark: black;
 // $border-dark-light: #252527;
 // $border-dark: #000;
 
+$background-darker: #000;
+$background-light: #c3c3c3;
 // $background-light: #fff;
 // $background-grey-light: #e8e8e8;
 // $background-grey-light2: #c7c7c7;
 // $background-grey: #808080;
-// $background-grey-dark: #595959;
-// $background-dark-light: #252527;
-// $background-dark: #000;
+$background-grey-dark: #595959;
+$background-grey-dark2: #252527;
+// $background-dark: #15202b;
 // $background-success: #84b84c1f;
 // $background-error: #ff00001f;
 // $background-dark-web: #16202b;
@@ -47,10 +49,10 @@ $font-dark: black;
 // $error: #ff0000;
 
 // // Social Color
-// $youtube: #cd201f;
-// $twitter: #1da1f2;
-// $facebook: #3b5998;
-// $linkedin: #0077b5;
+$youtube: #cd201f;
+$twitter: #1da1f2;
+$facebook: #3b5998;
+$linkedin: #0077b5;
 
 // // Responsive down size
 // $media-breackpoint-down-xs: 413.98px;

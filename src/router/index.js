@@ -28,6 +28,7 @@ const routes = [
     ]
   },
   { path: '/:notFount(.*)', component: Error404 }
+
 ]
 
 const router = createRouter({
