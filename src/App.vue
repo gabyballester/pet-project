@@ -1,30 +1,20 @@
 <template>
   <div class="app" :class="{ dark: isDark }">
-    <base-header />
-    <h1>Esto es App.vue</h1>
-    <Admin/>
-    <SignIn/>
-    <Home/>
-    <Contact/>
+    <!-- <base-header /> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import BaseHeader from "@/components/Header";
 import { mapGetters, mapActions } from "vuex";
-import Admin from './pages/Admin'
-import SignIn from './pages/Admin/SignIn';
-import Home from './pages/Home';
-import Contact from './pages/Contact';
+
 
 export default {
   name: "app",
   components: {
-    BaseHeader,
-    Admin,
-    SignIn,
-    Home,
-    Contact
+    // BaseHeader,
+
   },
   created() {
     if (this.hasMode === null) {

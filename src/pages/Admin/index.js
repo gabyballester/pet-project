@@ -1,1 +1,1 @@
-export {default} from './Admin.vue';
+export {default} from './HomeAdmin.vue';
