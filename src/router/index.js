@@ -4,7 +4,7 @@ import LayoutAdmin from '../layouts/LayoutAdmin.vue'
 import LayoutPublic from '../layouts/LayoutPublic.vue'
 // Admin pages
 import HomeAdmin from '../pages/Admin';
-import AdminSignIn from '../pages/Admin/SignIn.vue';
+import AdminSignIn from '../pages/Admin/SignIn';
 // Public pages
 import HomePublic from '../pages/Public';
 import Contact from '../pages/Contact.vue'

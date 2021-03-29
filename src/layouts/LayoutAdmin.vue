@@ -1,5 +1,8 @@
 <template>
-  <div class="global-container">
+  <div v-if="!user">
+    <AdminSignIn />
+  </div>
+  <div v-if="user" class="global-container">
     <div class="topmenu">
       <MenuTop />
     </div>
@@ -22,11 +25,26 @@
 <script>
 import MenuTop from "../components/Admin/MenuTop";
 import MenuSider from "../components/Admin/MenuSider";
+import AdminSignIn from "../pages/Admin/SignIn/index";
 
 export default {
   components: {
     MenuTop,
     MenuSider,
+    AdminSignIn,
+  },
+  data() {
+    return {
+      user: null,
+    };
+  },
+  created() {
+    this.userCheck();
+  },
+  methods: {
+    userCheck() {
+      if (!this.user) this.$router.push("/admin/login");
+    },
   },
 };
 </script>
