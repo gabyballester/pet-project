@@ -14,7 +14,9 @@ library.add(
   solidIcons.faUserFriends,
   solidIcons.faHandHoldingMedical,
   solidIcons.faBriefcaseMedical,
-  solidIcons.faStore
+  solidIcons.faStore,
+  solidIcons.faEnvelope,
+  solidIcons.faKey
 )
 
 

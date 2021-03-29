@@ -11,8 +11,8 @@ import BaseToggle from '@/components/BaseToggle';
 import LanguageSelector from '@/components/LanguageSelector';
 
 const app = createApp(App);
-app.use(store)
-app.use(router)
+app.use(store);
+app.use(router);
 app.use(i18n);
 
 // declaración de componentes globales
