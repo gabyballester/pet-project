@@ -207,9 +207,6 @@ export default {
         this.formData.privacyPolicy
       ) {
         console.log("correcto");
-      } else {
-        console.log("no correcto");
-        
       }
     },
   },
