@@ -121,14 +121,16 @@
 </template>
 
 <script>
+import { signUpApi } from "../../../api/user.api";
+
 export default {
   data() {
     return {
       formData: {
-        email: "",
-        password: "",
-        repeatPassword: "",
-        privacyPolicy: false,
+        email: "email@email.com",
+        password: "asdfasfd",
+        repeatPassword: "asdfasfd",
+        privacyPolicy: true,
       },
       minLength: 6,
       errors: {
@@ -181,7 +183,6 @@ export default {
       this.errors.comparePasswords.status = false;
       const length = this.formData.repeatPassword.length;
       const minLength = this.minLength;
-      console.log(length);
       if (length === 0) {
         this.errors.repeatPassword.status = false;
       } else if (length < minLength) {
@@ -197,7 +198,7 @@ export default {
         this.errors.comparePasswords.status = true;
       }
     },
-    submitForm() {
+    async submitForm() {
       this.comparePasswordsValidation();
       if (
         !this.errors.email.status &&
@@ -206,7 +207,8 @@ export default {
         !this.errors.comparePasswords.status &&
         this.formData.privacyPolicy
       ) {
-        console.log("correcto");
+        const result = await signUpApi(this.formData);
+        console.log(result);
       }
     },
   },

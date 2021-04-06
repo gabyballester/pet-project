@@ -38,7 +38,6 @@ export default {
       if (localStorageLang === null) {
         const navLang = navigator.language || navigator.userLanguage;
         if (navLang !== null) {
-          console.log("entra aqui");
           this.defaultLang = navLang.substring(0, 2);
           localStorage.setItem("lang", this.defaultLang);
           this.changeLanguage(this.defaultLang);
