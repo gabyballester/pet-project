@@ -40,7 +40,7 @@
             'tab-content-signin-hidden': tab,
           }"
         >
-          <RegisterForm/>
+          <RegisterForm />
         </div>
       </div>
     </div>
@@ -48,11 +48,11 @@
 </template>
 
 <script>
-import RegisterForm from '../../../components/Admin/RegisterForm'
+import RegisterForm from "../../../components/Admin/RegisterForm";
 
 export default {
-  components:{
-    RegisterForm
+  components: {
+    RegisterForm,
   },
   data() {
     return {
@@ -77,7 +77,7 @@ export default {
 }
 
 .layout-signin {
-  background-image: url('../../../assets/img/jpg/background-v1.jpg');
+  background-image: url("../../../assets/img/jpg/background-v1.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -95,7 +95,7 @@ export default {
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    
+
     .tab-layout-signin {
       width: 95vw;
       background-color: white;
@@ -154,7 +154,7 @@ export default {
       .tab-content-signin {
         background-color: white;
         color: black;
-        padding: 16px 16px 16px 16px;
+        padding: 16px 46px;
         text-align: center;
         border-radius: 0 0 5% 5% !important;
       }

@@ -1,5 +1,19 @@
 <template>
-  <form class="container-form" @submit.prevent="submitForm">
+  <base-dialog
+    :show="!response.status"
+    title="¡ Ups !"
+    @close="handleError"
+    :mode="mode"
+  >
+    <div :class="mode">
+      <p>{{ response.message }}</p>
+      <p>Intenta loguearte o solicita contraseña</p>
+    </div>
+  </base-dialog>
+  <div v-if="isLoading">
+    <base-spinner></base-spinner>
+  </div>
+  <form v-if="!isLoading" class="container-form" @submit.prevent="submitForm">
     <!-- email input  -->
     <div class="row-form">
       <div
@@ -114,9 +128,9 @@
       <div></div>
     </div>
 
-    <button class="button-form" type="submit">
+    <base-button mode="success flat" class="button-form" type="submit">
       Crear cuenta
-    </button>
+    </base-button>
   </form>
 </template>
 
@@ -132,7 +146,13 @@ export default {
         repeatPassword: "asdfasfd",
         privacyPolicy: true,
       },
+      isLoading: false,
       minLength: 6,
+      response: {
+        status: true,
+        message: "",
+      },
+      mode: null,
       errors: {
         email: {
           status: true,
@@ -207,9 +227,24 @@ export default {
         !this.errors.comparePasswords.status &&
         this.formData.privacyPolicy
       ) {
-        const result = await signUpApi(this.formData);
-        console.log(result);
+        try {
+          this.isLoading = true;
+          const result = await signUpApi(this.formData);
+          console.log(result);
+          this.response.status = result.ok;
+          this.response.message = result.message;
+          result.ok ? (this.mode = "success flat") : (this.mode = "error flat");
+        } catch (error) {
+          this.isLoading = false;
+        } finally {
+          this.isLoading = false;
+        }
+      } else {
+        this.isLoading = false;
       }
+    },
+    handleError() {
+      this.response = { status: true, message: "" };
     },
   },
 };
@@ -217,6 +252,14 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/index.scss";
+
+div.error.flat > p {
+  color: $error;
+}
+
+div.error.flat > p:first-child {
+  margin-bottom: 10px;
+}
 
 .container-form {
   padding: 30px 15px 15px 15px;
@@ -311,29 +354,29 @@ export default {
       }
     }
 
-    .button-form {
-      margin-top: 10px;
-      background-color: $primary-color;
-      color: $font-light;
-      border-radius: 5px;
-      border: 1px solid $background-grey-light2;
-      height: 42px;
-      width: 100%;
-      font-size: 0em + 18px / $defaultFontSize;
-      cursor: pointer;
-    }
+    // .button-form {
+    //   margin-top: 10px;
+    //   background-color: $primary-color;
+    //   color: $font-light;
+    //   border-radius: 5px;
+    //   border: 1px solid $background-grey-light2;
+    //   height: 42px;
+    //   width: 100%;
+    //   font-size: 0em + 18px / $defaultFontSize;
+    //   cursor: pointer;
+    // }
 
-    .button-form:hover {
-      background-color: $primary-color-hover;
-      color: $font-light;
-    }
+    // .button-form:hover {
+    //   background-color: $primary-color-hover;
+    //   color: $font-light;
+    // }
 
-    .button-form:focus,
-    .button-form:active {
-      background-color: $primary-color;
-      color: $font-light;
-      outline: none;
-    }
+    // .button-form:focus,
+    // .button-form:active {
+    //   background-color: $primary-color;
+    //   color: $font-light;
+    //   outline: none;
+    // }
   }
 
   .error-div {
