@@ -40,7 +40,7 @@
             'tab-content-signin-hidden': tab,
           }"
         >
-          <RegisterForm />
+          <RegisterForm @login="changeTab"/>
         </div>
       </div>
     </div>
@@ -63,6 +63,9 @@ export default {
     setTab(value) {
       this.tab = value;
     },
+    changeTab(){
+      this.tab = !this.tab
+    }
   },
 };
 </script>

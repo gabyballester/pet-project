@@ -12,7 +12,7 @@
       </div>
       <div v-else>
         <p>¡Aviso! El correo ya está registrado</p>
-        <p>Intenta loguearte o solicita contraseña</p>
+        <p>Elige otro, loguéate o solicita contraseña si no la recuerdas</p>
       </div>
     </div>
   </base-dialog>
@@ -250,11 +250,10 @@ export default {
         try {
           this.isLoading = true;
           const result = await signUpApi(this.formData);
-          console.log(result);
-          this.response.status = result.ok;
-          this.response.message = result.message;
+          this.response = { status: result.ok, message: result.message };
           if (result.ok) {
-            (this.mode = "success flat"), this.$emit("login");
+            this.mode = "success flat";
+            this.$emit("login");
           } else {
             this.mode = "error flat";
           }
