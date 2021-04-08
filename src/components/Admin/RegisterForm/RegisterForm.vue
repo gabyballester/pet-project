@@ -155,8 +155,8 @@ export default {
     return {
       formData: {
         email: "email@email.com",
-        password: "asdfasfd",
-        repeatPassword: "asdfasfd",
+        password: "asdfasf",
+        repeatPassword: "asdfasf",
         privacyPolicy: true,
       },
       isLoading: false,
@@ -254,6 +254,7 @@ export default {
           if (result.ok) {
             this.mode = "success flat";
             this.$emit("login");
+            this.resetForm();
           } else {
             this.mode = "error flat";
           }
@@ -269,6 +270,14 @@ export default {
     handleError() {
       this.response = { status: null, message: "" };
     },
+    resetForm(){
+      this.formData = {
+        email: "",
+        password: "",
+        repeatPassword: "",
+        privacyPolicy: false,
+      }
+    }
   },
   emits: ["login"],
 };
