@@ -10,9 +10,16 @@
       <p>Intenta loguearte o solicita contraseña</p>
     </div>
   </base-dialog>
-  <div v-if="isLoading">
+
+  <base-dialog
+    :show="isLoading"
+    title="Cargando"
+    mode="success"
+    :showButton="false"
+    :showHeader="false"
+  >
     <base-spinner></base-spinner>
-  </div>
+  </base-dialog>
   <form v-if="!isLoading" class="container-form" @submit.prevent="submitForm">
     <!-- email input  -->
     <div class="row-form">

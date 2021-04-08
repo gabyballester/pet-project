@@ -7,7 +7,7 @@
     </div>
     <div v-if="show" @click="tryClose" class="backdrop"></div>
     <dialog open v-if="show">
-      <header :class="mode">
+      <header v-if="showHeader" :class="mode">
         <slot name="header">
           <p>{{ title }}</p>
         </slot>
@@ -17,7 +17,9 @@
       </section>
       <menu v-if="!fixed">
         <slot name="actions">
-          <base-button :mode="mode" @click="tryClose">Cerrar</base-button>
+          <base-button v-if="showButton" :mode="mode" @click="tryClose"
+            >Cerrar</base-button
+          >
         </slot>
       </menu>
     </dialog>
@@ -43,6 +45,16 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    showButton: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    showHeader: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
   emits: ["close"],
@@ -91,7 +103,7 @@ header {
   width: 100%;
   p {
     font-size: 1.5rem;
-     margin: 0;
+    margin: 0;
   }
 }
 

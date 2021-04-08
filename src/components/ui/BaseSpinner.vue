@@ -12,7 +12,7 @@
 <style>
 .sk-chase {
   margin: 0 auto;
-  margin-bottom: 30px;
+  margin: 20px 0;
   width: 50px;
   height: 50px;
   position: relative;
