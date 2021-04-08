@@ -1,13 +1,14 @@
 <template>
   <base-dialog
-    :show="!response.status"
+    :show="showModal"
     title="¡ Ups !"
     @close="handleError"
     :mode="mode"
   >
     <div :class="mode">
       <p>{{ response.message }}</p>
-      <p>Intenta loguearte o solicita contraseña</p>
+      <p v-if="response.status">Revisa tu correo y activa tu cuenta</p>
+      <p v-else>Intenta loguearte o solicita contraseña</p>
     </div>
   </base-dialog>
 
@@ -156,7 +157,7 @@ export default {
       isLoading: false,
       minLength: 6,
       response: {
-        status: true,
+        status: null,
         message: "",
       },
       mode: null,
@@ -185,6 +186,11 @@ export default {
       const checker = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
       return !checker.test(this.formData.email);
     },
+    showModal(){
+      if(this.response.status===null){
+        return false
+      } else { return true}
+    }
   },
   methods: {
     validateEmail() {
@@ -251,7 +257,7 @@ export default {
       }
     },
     handleError() {
-      this.response = { status: true, message: "" };
+      this.response = { status: null, message: "" };
     },
   },
 };

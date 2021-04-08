@@ -154,7 +154,7 @@ export default {
       .tab-content-signin {
         background-color: white;
         color: black;
-        padding: 16px 46px;
+        padding: 16px 26px;
         text-align: center;
         border-radius: 0 0 5% 5% !important;
       }
