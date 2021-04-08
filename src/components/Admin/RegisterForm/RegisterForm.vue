@@ -20,7 +20,6 @@
   <base-dialog
     :show="isLoading"
     title="Cargando"
-    mode="success"
     :showButton="false"
     :showHeader="false"
   >
@@ -141,7 +140,7 @@
       <div></div>
     </div>
 
-    <base-button mode="success flat" class="button-form" type="submit">
+    <base-button mode="button primary flat" class="button-form" type="submit">
       Crear cuenta
     </base-button>
   </form>
@@ -154,10 +153,10 @@ export default {
   data() {
     return {
       formData: {
-        email: "email@email.com",
-        password: "asdfasf",
-        repeatPassword: "asdfasf",
-        privacyPolicy: true,
+        email: "",
+        password: "",
+        repeatPassword: "",
+        privacyPolicy: false,
       },
       isLoading: false,
       minLength: 6,
@@ -295,7 +294,7 @@ div.error.flat > div > p:first-child {
 }
 
 .container-form {
-  padding: 30px 15px 15px 15px;
+  padding: 30px 15px 10px 15px;
   display: flex;
   flex-grow: 1;
   align-items: flex-start;
@@ -386,30 +385,6 @@ div.error.flat > div > p:first-child {
         padding-bottom: 3px;
       }
     }
-
-    // .button-form {
-    //   margin-top: 10px;
-    //   background-color: $primary-color;
-    //   color: $font-light;
-    //   border-radius: 5px;
-    //   border: 1px solid $background-grey-light2;
-    //   height: 42px;
-    //   width: 100%;
-    //   font-size: 0em + 18px / $defaultFontSize;
-    //   cursor: pointer;
-    // }
-
-    // .button-form:hover {
-    //   background-color: $primary-color-hover;
-    //   color: $font-light;
-    // }
-
-    // .button-form:focus,
-    // .button-form:active {
-    //   background-color: $primary-color;
-    //   color: $font-light;
-    //   outline: none;
-    // }
   }
 
   .error-div {
@@ -420,6 +395,9 @@ div.error.flat > div > p:first-child {
   .error-text {
     margin-top: 5px;
     color: $error !important;
+  }
+  .button{
+    width: 100%;
   }
 }
 </style>

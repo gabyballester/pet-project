@@ -32,7 +32,7 @@
             'tab-content-signin-hidden': !tab,
           }"
         >
-          LoginForm
+          <LoginForm />
         </div>
         <div
           :class="{
@@ -40,7 +40,7 @@
             'tab-content-signin-hidden': tab,
           }"
         >
-          <RegisterForm @login="changeTab"/>
+          <RegisterForm @login="changeTab" />
         </div>
       </div>
     </div>
@@ -48,24 +48,21 @@
 </template>
 
 <script>
-import RegisterForm from "../../../components/Admin/RegisterForm";
+import RegisterForm from "@/components/Admin/RegisterForm";
+import LoginForm from "@/components/Admin/LoginForm";
 
 export default {
-  components: {
-    RegisterForm,
-  },
+  components: { RegisterForm, LoginForm },
   data() {
-    return {
-      tab: false,
-    };
+    return { tab: true };
   },
   methods: {
     setTab(value) {
       this.tab = value;
     },
-    changeTab(){
-      this.tab = !this.tab
-    }
+    changeTab() {
+      this.tab = !this.tab;
+    },
   },
 };
 </script>

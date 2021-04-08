@@ -38,16 +38,46 @@ button {
   font: inherit;
   cursor: pointer;
   border-radius: 5px;
-  margin-right: 0.5rem;
   outline: none;
   font-weight: bold;
-  // display: inline-block;
+}
+
+// primary
+button:hover.primary.flat,
+button.primary.outline
+{
+  background-color: white;
+  color: $primary-color;
+  border: 2px solid $primary-color;
+}
+
+button.primary.flat,
+button:hover.primary.outline,
+button:active.primary.outline,
+button:focus.primary.outline,
+button:active.primary.flat
+ {
+  background-color: $primary-color;
+  opacity: 0.9;
+  color: white;
+  border: 2px solid $primary-color;
+}
+
+// success
+
+button:hover.success.flat,
+button.success.outline
+{
+  background-color: white;
+  color: $success;
+  border: 2px solid $success;
 }
 
 button.success.flat,
 button:hover.success.outline,
 button:active.success.outline,
-button:focus.success.outline
+button:focus.success.outline,
+button:active.success.flat
  {
   background-color: $success;
   opacity: 0.9;
@@ -55,20 +85,20 @@ button:focus.success.outline
   border: 2px solid $success;
 }
 
-button:hover.success.flat,
-button.success.outline,
-button:focus.success.flat,
-button:active.success.flat
+// error
+button:hover.error.flat,
+button.error.outline
 {
   background-color: white;
-  color: $success;
-  border: 2px solid $success;
+  color: $error;
+  border: 2px solid $error;
 }
 
 button.error.flat,
 button:hover.error.outline,
 button:active.error.outline,
-button:focus.error.outline
+button:focus.error.outline,
+button:active.error.flat
 {
   background-color: $error;
   opacity: 0.9;
@@ -76,13 +106,4 @@ button:focus.error.outline
   border: 2px solid $error;
 }
 
-button:hover.error.flat,
-button:active.error.flat,
-button:focus.error.flat,
-button.error.outline
-{
-  background-color: white;
-  color: $error;
-  border: 2px solid $error;
-}
 </style>
