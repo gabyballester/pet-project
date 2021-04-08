@@ -6,9 +6,14 @@
     :mode="mode"
   >
     <div :class="mode">
-      <p>{{ response.message }}</p>
-      <p v-if="response.status">Revisa tu correo y activa tu cuenta</p>
-      <p v-else>Intenta loguearte o solicita contraseña</p>
+      <div v-if="response.status">
+        <p>Usuario creado satisfactoriamente!</p>
+        <p>Revisa tu correo para activar tu cuenta y loguéate</p>
+      </div>
+      <div v-else>
+        <p>¡Aviso! El correo ya está registrado</p>
+        <p>Intenta loguearte o solicita contraseña</p>
+      </div>
     </div>
   </base-dialog>
 
@@ -21,7 +26,7 @@
   >
     <base-spinner></base-spinner>
   </base-dialog>
-  <form v-if="!isLoading" class="container-form" @submit.prevent="submitForm">
+  <form class="container-form" @submit.prevent="submitForm">
     <!-- email input  -->
     <div class="row-form">
       <div
@@ -186,11 +191,13 @@ export default {
       const checker = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
       return !checker.test(this.formData.email);
     },
-    showModal(){
-      if(this.response.status===null){
-        return false
-      } else { return true}
-    }
+    showModal() {
+      if (this.response.status === null) {
+        return false;
+      } else {
+        return true;
+      }
+    },
   },
   methods: {
     validateEmail() {
@@ -246,7 +253,11 @@ export default {
           console.log(result);
           this.response.status = result.ok;
           this.response.message = result.message;
-          result.ok ? (this.mode = "success flat") : (this.mode = "error flat");
+          if (result.ok) {
+            (this.mode = "success flat"), this.$emit("login");
+          } else {
+            this.mode = "error flat";
+          }
         } catch (error) {
           this.isLoading = false;
         } finally {
@@ -260,6 +271,7 @@ export default {
       this.response = { status: null, message: "" };
     },
   },
+  emits: ["login"],
 };
 </script>
 
@@ -270,7 +282,7 @@ div.error.flat > p {
   color: $error;
 }
 
-div.error.flat > p:first-child {
+div.error.flat > div > p:first-child {
   margin-bottom: 10px;
 }
 

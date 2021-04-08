@@ -1,10 +1,5 @@
 <template>
   <teleport to="body">
-    <div>
-      <section>
-        <slot></slot>
-      </section>
-    </div>
     <div v-if="show" @click="tryClose" class="backdrop"></div>
     <dialog open v-if="show">
       <header v-if="showHeader" :class="mode">
