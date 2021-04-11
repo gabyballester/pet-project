@@ -1,4 +1,15 @@
 <template>
+<!-- spinner -->
+  <base-dialog
+    :show="isLoading"
+    :showHeader="true"
+    mode="primary"
+    title="Espere por favor..."
+    :showButton="false"
+  >
+    <base-spinner></base-spinner>
+  </base-dialog>
+<!-- modal -->
   <base-dialog
     :show="showModal"
     title="¡ Ups !"
@@ -17,14 +28,6 @@
     </div>
   </base-dialog>
 
-  <base-dialog
-    :show="isLoading"
-    title="Cargando"
-    :showButton="false"
-    :showHeader="false"
-  >
-    <base-spinner></base-spinner>
-  </base-dialog>
   <form class="container-form" @submit.prevent="submitForm">
     <!-- email input  -->
     <div class="row-form">

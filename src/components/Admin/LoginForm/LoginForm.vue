@@ -1,4 +1,30 @@
 <template>
+  <!-- spinner -->
+  <base-dialog
+    :show="isLoading"
+    :showHeader="true"
+    :mode="response.mode"
+    title="Espere por favor..."
+    :showButton="false"
+  >
+    <base-spinner></base-spinner>
+  </base-dialog>
+  <!-- modal -->
+  <base-dialog
+    :show="response.showModal"
+    :title="showResponseTitle"
+    @close="handleError"
+    :mode="response.mode"
+  >
+    <div>
+      <p v-if="response.code === 200">login-success</p>
+      <p v-if="response.code === 401">Error 401</p>
+      <p v-if="response.code === 403">inactive-user</p>
+      <p v-if="response.code === 404">Error 404</p>
+      <p v-if="response.code === 500">Error en petición</p>
+    </div>
+  </base-dialog>
+
   <form class="container-form" @submit.prevent="submitForm">
     <!-- email input  -->
     <div class="row-form">
@@ -32,13 +58,21 @@
     </div>
 
     <!-- button -->
-    <base-button mode="primary flat button" class="button-form" type="submit">
+    <base-button
+      @keydown="redirectToAdmin"
+      mode="primary flat button"
+      class="button-form"
+      type="submit"
+    >
       Iniciar sesión
     </base-button>
   </form>
 </template>
 
 <script>
+import { signInApi } from "../../../api/user.api";
+import { mapActions } from "vuex";
+
 export default {
   data() {
     return {
@@ -46,28 +80,71 @@ export default {
         email: "email@email.com",
         password: "asdfasf",
       },
+      response: {
+        showModal: false,
+        title: "",
+        message: "",
+        mode: "",
+        code: "",
+      },
+      isLoading: false,
     };
   },
+  computed: {
+    showResponseTitle() {
+      if (this.response.code === 200) {
+        return "success-200";
+      } else {
+        return "success-200-not";
+      }
+    },
+  },
   methods: {
-    submitForm() {
-      console.log(this.formData);
-      // if (!this.errors.email.status) {
-      //   try {
-      //     this.isLoading = true;
-      //     const result = await signUpApi(this.formData);
-      //     this.response = { status: result.ok, message: result.message };
-      //     if (result.ok) {
-      //       this.mode = "success flat";
-      //     } else {
-      //       this.mode = "error flat";
-      //     }
-      //     this.isLoading = false;
-      //   } catch (error) {
-      //     this.isLoading = false;
-      //   }
-      // } else {
-      //   this.isLoading = false;
-      // }
+    ...mapActions("authModule",
+     ["setTokensOnLocalStorage", "setTokensOnVuex"]),
+    async submitForm() {
+      try {
+        this.isLoading = true;
+        const { data, response } = await signInApi(this.formData);
+        this.isLoading = false;
+        if (response.status === 200) {
+          this.isLoading = false;
+          this.setTokensOnLocalStorage(data);
+          this.setTokensOnVuex(data)
+          this.$router.push("/admin");
+        } else if (response.status === 401) {
+          this.response = {
+            showModal: true,
+            mode: "error flat",
+            code: response.status,
+          };
+        } else if (response.status === 403) {
+          this.response = {
+            showModal: true,
+            mode: "error flat",
+            code: response.status,
+          };
+        } else if (response.status === 404) {
+          this.response = {
+            showModal: true,
+            mode: "error flat",
+            code: response.status,
+          };
+        }
+      } catch (error) {
+        this.response = {
+          showModal: true,
+          mode: "error flat",
+          code: 500,
+        };
+      }
+      this.isLoading = false;
+    },
+    handleError() {
+      this.response = { showModal: false, message: "" };
+    },
+    redirectToAdmin() {
+      this.$router.push("/admin");
     },
   },
 };
@@ -75,14 +152,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/index.scss";
-
-div.error.flat > p {
-  color: $error;
-}
-
-div.error.flat > div > p:first-child {
-  margin-bottom: 10px;
-}
 
 .container-form {
   padding: 30px 15px 10px 15px;

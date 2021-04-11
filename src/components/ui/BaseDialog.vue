@@ -93,6 +93,7 @@ dialog {
 }
 
 header {
+  text-align: center;
   padding: 10px;
   color: white;
   width: 100%;
@@ -108,6 +109,10 @@ header.error {
 
 header.success {
   background-color: green;
+}
+
+header.primary {
+  background-color: $primary-color;
 }
 
 section {

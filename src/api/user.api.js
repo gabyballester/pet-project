@@ -22,3 +22,23 @@ export async function signUpApi(data) {
     return { ok: false, message: err.message };
   }
 }
+
+export async function signInApi(data) {
+  const url = `${baseUrl}/sign-in`;
+
+  const params = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  try {
+    const response = await fetch(url, params);
+    const data = await response.json();
+    return { response, data };
+  } catch (err) {
+    return err.message;
+  }
+}

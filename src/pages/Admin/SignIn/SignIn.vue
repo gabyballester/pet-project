@@ -100,15 +100,17 @@ export default {
       width: 95vw;
       background-color: white;
       height: auto;
-      border-radius: 0 0 5% 5% !important;
-
+      border-radius: 0px 0 5px 5px !important;
+        background-color: transparent;
       @media (min-width: $media-breackpoint-up-sm) {
         width: 500px;
+        background-color: inherit;
       }
 
       .tab-header-signin {
         display: flex;
         height: 3rem;
+        background-color: inherit;
 
         .tab1,
         .tab2 {
@@ -117,6 +119,7 @@ export default {
           justify-content: center;
           align-content: center;
           cursor: pointer;
+          border-radius: 10px 10px 0 0;
 
           .text {
             display: flex;
@@ -136,18 +139,22 @@ export default {
 
         .inactive {
           background-color: $background-grey-light;
-          border-bottom: 2px solid $background-grey-light2;
+          border-bottom: 2px solid $background-grey;
           border-top: 4px solid $background-grey;
         }
 
         .tab1.inactive {
-          border-right: 2px solid $background-grey-light2;
-          border-left: 2px solid transparent;
+          border-bottom: 2px solid $background-grey-light2;
+          border-top: 4px solid $background-grey;
+          border-right: 1px solid $background-grey;
+          border-left: 1px solid $background-grey;
         }
 
         .tab2.inactive {
-          border-right: 2px solid transparent;
-          border-left: 2px solid $background-grey-light2;
+          border-bottom: 2px solid $background-grey-light2;
+          border-top: 4px solid $background-grey;
+          border-right: 1px solid $background-grey;
+          border-left: 1px solid $background-grey;
         }
       }
 
@@ -156,7 +163,7 @@ export default {
         color: black;
         padding: 16px 26px;
         text-align: center;
-        border-radius: 0 0 5% 5% !important;
+        border-radius: 0 0 5px 5px;
       }
 
       .tab-content-signin-hidden {
