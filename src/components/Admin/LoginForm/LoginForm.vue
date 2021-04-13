@@ -59,7 +59,6 @@
 
     <!-- button -->
     <base-button
-      @keydown="redirectToAdmin"
       mode="primary flat button"
       class="button-form"
       type="submit"

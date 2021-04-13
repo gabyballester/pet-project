@@ -4,7 +4,7 @@
       <h1 class="logo">Logo</h1>
     </div>
     <div class="right">
-      <button @click="logout">
+      <button @click="logoutUser">
         <icon class="icon" icon="power-off" />
       </button>
     </div>
@@ -13,16 +13,16 @@
 
 <script>
 import { mapGetters } from "vuex";
+import {logout} from '../../../services/auth.service';
+
 export default {
   computed: {
     ...mapGetters("darkModeModule", ["isDark"]),
   },
   methods: {
-    menuAction() {
-      console.log("botón menú");
-    },
-    logout() {
-      console.log("botón menú");
+    logoutUser() {
+      logout();
+      this.$router.push("/login");
     },
   },
 };

@@ -78,7 +78,7 @@ export async function refreshAccessToken() {
   }
 }
 
-function logout() {
+export function logout() {
   localStorageItem("delete", ACCESS_TOKEN);
   localStorageItem("delete", REFRESH_TOKEN);
 }
