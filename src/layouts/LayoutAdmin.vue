@@ -23,6 +23,7 @@
 import MenuTop from "../components/Admin/MenuTop";
 import MenuSider from "../components/Admin/MenuSider";
 import AdminSignIn from "../pages/Admin/SignIn/index";
+import { isAuth } from "../services/auth.service";
 
 export default {
   components: {
@@ -30,6 +31,15 @@ export default {
     MenuSider,
     AdminSignIn,
   },
+  // created() {
+  //   this.getAccessToken();
+  // },
+  // methods: {
+  //   getAccessToken() {
+  //     const token = isAuth();
+  //     // console.log(token);
+  //   },
+  // },
 };
 </script>
 

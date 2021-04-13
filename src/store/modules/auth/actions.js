@@ -1,8 +1,6 @@
-export default {
-  setTokensOnLocalStorage(context, payload) {
-    context.commit('setTokensOnLocalStorage', payload);
-  },
-  setTokensOnVuex(context, payload) {
-    context.commit('setTokensOnVuex', payload);
-  }
-};
+// export default {
+//   setTokensOnLocalStorage(context, payload) {
+//     console.log('ejecuta action vuex');
+//     context.commit('setTokensOnLocalStorage', payload);
+//   }
+// };

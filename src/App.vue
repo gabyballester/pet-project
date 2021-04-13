@@ -15,35 +15,21 @@ export default {
   components: {
     // BaseHeader,
   },
-  created() {
-    this.checkTokensOnLocalStorage();
-    this.checkModeOnCreated();
-  },
   computed: {
     ...mapGetters("darkModeModule", ["isDark"]),
-    ...mapGetters("authModule", ["getBothTokens"]),
     hasMode() {
       return JSON.parse(localStorage.getItem("darkMode"));
     },
   },
   methods: {
     ...mapActions("darkModeModule", ["setMode", "resetMode"]),
-    ...mapActions("authModule", ["setTokensOnLocalStorage", "setTokensOnVuex"]),
     checkModeOnCreated() {
       if (this.hasMode === null) {
         this.resetMode();
       } else {
         this.setMode(this.hasMode);
       }
-    },
-    checkTokensOnLocalStorage() {
-      const accessToken = localStorage.getItem(ACCESS_TOKEN);
-      const refreshToken = localStorage.getItem(REFRESH_TOKEN);
-      if (accessToken && refreshToken) {
-        const payload = { accessToken, refreshToken };
-        this.setTokensOnVuex(payload);
-      }
-    },
+    }
   },
 };
 </script>

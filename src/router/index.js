@@ -15,7 +15,7 @@ import Contact from '../pages/Contact.vue'
 // General pages
 import Error404 from '../pages/Error404.vue';
 
-import {isAuth} from '../utils/auth.service';
+import { checkUserLogin } from '../services/auth.service';
 
 
 const router = createRouter({
@@ -26,7 +26,7 @@ const router = createRouter({
       children: [
         {
           path: '/admin', component: HomeAdmin
-          , meta: { requiresAuth: true}
+          , meta: { requiresAuth: true }
         }
       ]
     },
@@ -46,12 +46,11 @@ const router = createRouter({
 });
 
 // Middleware para comprobar la existencia de JWT
-router.beforeEach ((to, from, next) => {
-  if (to.meta.requiresAuth && !isAuth()) {
-    console.log(isAuth());
-      next("/login");
-  } else if (to.meta.requiresUnauth && isAuth()) {
-    console.log(isAuth());
+router.beforeEach((to, from, next) => {
+  console.log(checkUserLogin());
+  if (to.meta.requiresAuth && !checkUserLogin()) {
+    next("/login");
+  } else if (to.meta.requiresUnauth && checkUserLogin()) {
     next("/admin");
   } else {
     next();

@@ -71,7 +71,8 @@
 
 <script>
 import { signInApi } from "../../../api/user.api";
-import { mapActions } from "vuex";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../utils/constants";
+import { localStorageItem } from "../../../services/auth.service";
 
 export default {
   data() {
@@ -100,8 +101,6 @@ export default {
     },
   },
   methods: {
-    ...mapActions("authModule",
-     ["setTokensOnLocalStorage", "setTokensOnVuex"]),
     async submitForm() {
       try {
         this.isLoading = true;
@@ -109,9 +108,8 @@ export default {
         this.isLoading = false;
         if (response.status === 200) {
           this.isLoading = false;
-          this.setTokensOnLocalStorage(data);
-          this.setTokensOnVuex(data)
-          this.$router.push("/admin");
+          this.saveTokens(data);
+          this.redirect("/admin")
         } else if (response.status === 401) {
           this.response = {
             showModal: true,
@@ -143,8 +141,12 @@ export default {
     handleError() {
       this.response = { showModal: false, message: "" };
     },
-    redirectToAdmin() {
-      this.$router.push("/admin");
+    saveTokens({accessToken, refreshToken}) {
+      localStorageItem("set", ACCESS_TOKEN, accessToken);
+      localStorageItem("set", REFRESH_TOKEN, refreshToken);
+    },
+    redirect(path) {
+      this.$router.push(path);
     },
   },
 };
