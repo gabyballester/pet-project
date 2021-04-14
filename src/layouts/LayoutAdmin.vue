@@ -89,7 +89,8 @@ export default {
         flex-direction: row;
         align-items: center;
         width: calc(100vw - 15rem);
-        background: $background-grey-dark2;
+        background: gray;
+        color: white;
       }
     }
   }

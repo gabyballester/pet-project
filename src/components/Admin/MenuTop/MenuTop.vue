@@ -16,9 +16,6 @@ import { mapGetters } from "vuex";
 import {logout} from '../../../services/auth.service';
 
 export default {
-  computed: {
-    ...mapGetters("darkModeModule", ["isDark"]),
-  },
   methods: {
     logoutUser() {
       logout();
@@ -31,7 +28,6 @@ export default {
 <style lang="scss" scoped>
 @import "../../../assets/scss/index.scss";
 
-// light mode
 .menu-top {
   background: $background-light;
   width: 100%;
@@ -54,18 +50,6 @@ export default {
     color: $font-dark;
     border: 0;
     outline: none;
-    &:hover {
-      color: $primary-color;
-    }
-  }
-}
-
-// dark mode
-.dark .menu-top {
-  background-color: $font-dark;
-  transition: background 0.3s ease-in-out;
-  button {
-    color: white;
     &:hover {
       color: $primary-color;
     }
